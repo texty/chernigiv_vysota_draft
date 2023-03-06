@@ -243,6 +243,7 @@ function handleStepEnter(r) {
     let myarr_l = $(r.element).data("lines");
     let myarr_d = $(r.element).data("points");
     let img_src = $(r.element).data("picture");
+    let video_src = $(r.element).data("video");
 
     // filter layers
     map.setFilter('polygons-layer', ["match", ["get", "id"], myarr_p, true, false]);
@@ -256,6 +257,43 @@ function handleStepEnter(r) {
 
     const fadeDuration = 1000;
 
+   
+
+    // if(r.index === 31){
+    //     var video = document.getElementById('cover-video');
+    //     video.src = "video/Fight_short.mp4";
+    //     video.play();
+    //     $("#cover-video").fadeIn(0)
+    //     $("#map").fadeOut(fadeDuration)
+    //     $("#cover-picture").fadeOut(fadeDuration)
+    // }
+
+    // if(r.index === 30 || r.index === 32){
+    //     $("#map").fadeIn(fadeDuration)
+    //     $("#cover-picture").fadeOut(fadeDuration)
+    //     $("#cover-video").fadeOut(fadeDuration)
+    // }
+
+    // if(r.index === 33){
+    //     var video = document.getElementById('cover-video');
+    //     video.src = "video/vidstup.mp4#t=03,10";
+    //     video.play();
+    //     $("#cover-video").fadeIn(0)
+        
+    //     $("#map").fadeOut(fadeDuration)
+    //     $("#cover-picture").fadeOut(fadeDuration)
+    // }
+
+    // if(r.index === 34){
+    //     var video = document.getElementById('cover-video');
+    //     video.src = "video/miny.mp4";
+    //     video.play();
+    //     $("#cover-video").fadeIn(0)
+        
+    //     $("#map").fadeOut(fadeDuration)
+    //     $("#cover-picture").fadeOut(fadeDuration)
+    // }
+
     if(img_src){
         $("#cover-picture").css("background-image", 'url(' + img_src[0]+ ')')
         $("#cover-picture").fadeIn(0)
@@ -263,24 +301,22 @@ function handleStepEnter(r) {
         $("#map").fadeOut(fadeDuration)
        
        
-    } else {
+    } else if(video_src){
+        var video = document.getElementById('cover-video');
+        video.src = video_src;
+        video.play();
+        $("#cover-video").fadeIn(0)
+        
+        $("#map").fadeOut(fadeDuration)
+        $("#cover-picture").fadeOut(fadeDuration)
+    }
+    else {
         $("#map").fadeIn(0)
-
          $("#cover-picture").fadeOut(fadeDuration)
          $("#cover-video").fadeOut(fadeDuration)
     }
 
-    if(r.index === 31){
-        $("#map").fadeOut(fadeDuration)
-        $("#cover-picture").fadeOut(fadeDuration)
-        $("#cover-video").fadeIn(0)
-    }
 
-    if(r.index === 30 || r.index === 32){
-        $("#map").fadeIn(fadeDuration)
-        $("#cover-picture").fadeOut(fadeDuration)
-        $("#cover-video").fadeOut(fadeDuration)
-    }
 
     map.flyTo({
         center:index_locations[r.index].coords,
