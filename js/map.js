@@ -257,26 +257,26 @@ function handleStepEnter(r) {
     const fadeDuration = 1000;
 
     if(img_src){
-        
-        $("#cover-picture").fadeIn(fadeDuration)
+        $("#cover-picture").css("background-image", 'url(' + img_src[0]+ ')')
+        $("#cover-picture").fadeIn(0)
         $("#cover-video").fadeOut(fadeDuration)
         $("#map").fadeOut(fadeDuration)
-        $("#cover-picture").css("background-image", 'url(' + img_src[0]+ ')')
        
        
     } else {
-        $("#cover-picture").fadeOut(fadeDuration)
-         $("#map").fadeIn(fadeDuration)
+        $("#map").fadeIn(0)
+
+         $("#cover-picture").fadeOut(fadeDuration)
          $("#cover-video").fadeOut(fadeDuration)
     }
 
-    if(r.index === 30){
+    if(r.index === 31){
         $("#map").fadeOut(fadeDuration)
         $("#cover-picture").fadeOut(fadeDuration)
         $("#cover-video").fadeIn(0)
     }
 
-    if(r.index === 29 || r.index === 31){
+    if(r.index === 30 || r.index === 32){
         $("#map").fadeIn(fadeDuration)
         $("#cover-picture").fadeOut(fadeDuration)
         $("#cover-video").fadeOut(fadeDuration)
