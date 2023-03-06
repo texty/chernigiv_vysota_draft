@@ -1,10 +1,10 @@
 body {
-    /* background-color: #292728;
-    color: #CCCCCC; */
     font-family: sans-serif;
     line-height: 1.5;
 }
-
+.mobile-only {
+    display: none;
+}
 
 .two-col-grid {
     display:grid; 
@@ -16,9 +16,14 @@ body {
 .left-oriented {
     grid-template-columns: 1fr 1.5fr;
 }
+
 @media(max-width: 900px){
     .two-col-grid {
         display:block; 
+    }
+
+    .mobile-only {
+        display: block;
     }
 }
 
@@ -201,7 +206,17 @@ input#toggle2:checked ~ .box2 { height:max-content; }
 }
 
 .scroll__graphic  #cover-picture {
+    width: 100%; 
+    height: 100vh; 
+    background-image: url('../img/misto_z_pagorba.JPG');
+    background-size: cover;
     z-index:10;
+}
+
+@media(max-width:800px){
+    .scroll__graphic  #cover-picture {
+        height: 50vh; 
+    }
 }
 
 .scroll__graphic  #cover-video {
@@ -222,8 +237,8 @@ input#toggle2:checked ~ .box2 { height:max-content; }
     width: 100%;
     height: max-content;
     min-height: 50px;
-    margin-top: 80vh;
-    margin-bottom: 80vh;
+    margin-top: 0;
+    margin-bottom: 140vh;
     font-family: sans-serif;
     line-height: 1.6;
     pointer-events: auto;
@@ -232,18 +247,19 @@ input#toggle2:checked ~ .box2 { height:max-content; }
 
 .step > div {
     font-size: 18px;
-    padding: 20px; 
+    /* padding: 20px;  */
    
     /* background-color: rgba(255, 255, 255, 0.9); */
 }
 
 .step h2 {
     font-size: 20px;
+    text-shadow: 1px 1px 3px #ffffff;
 }
 
 .step p {
-    background-color:#fdfdfdaa;
-    margin-top: 0 !important;
+    background-color:#fdfdfde2;
+    margin-top: 0;
     margin-bottom: 20px;
     height: max-content;
     padding:2px;
@@ -261,6 +277,7 @@ figcaption {
     font-size: 13px;
     font-style: italic;
     line-height: 1.2;
+    margin-bottom: 20px;
     background-color: rgba(255, 255, 255, 0.929);
 }
 
@@ -289,13 +306,13 @@ video {
 a {
     color: inherit;
     text-decoration: none;
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 2px solid #F26344;;
     padding-bottom: 1px;
 }
 
 a:hover {
     color: #F26344;
-    border-bottom: 1px solid #F26344;
+    border-bottom: 2px solid #F26344;
 }
 
 @media(max-width: 800px){
@@ -339,7 +356,7 @@ a:hover {
     margin-left: 5px;
     border-bottom: none;
     cursor: pointer;
-}
+}s
 
 .fb  img {
     margin: auto 10px;
