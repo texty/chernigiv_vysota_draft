@@ -104,7 +104,7 @@ map.on('load', function () {
           visibility: 'visible',
           'symbol-placement': "line-center",
           'symbol-spacing': 1,
-          'icon-size': 0.65,
+          'icon-size': 0.08,
           'icon-image': 'red_arrow',
           'icon-rotate': ['get', 'bearing'],
           'icon-rotation-alignment': 'map',
