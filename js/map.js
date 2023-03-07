@@ -1,6 +1,11 @@
 var main_zoom = 13
 var redColor= "rgb(250,70,0)";
-var map_center = [31.39732070281275, 51.53429993623848]
+var map_center = [31.39732070281275, 51.53429993623848];
+
+const bounds = [
+    [30.5121,50.2234], // Southwest coordinates
+    [33.4476,52.6351] // Northeast coordinates
+    ];
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZXZnZXNoYWRyb3pkb3ZhIiwiYSI6ImNqOWRhbnk3MDI4MGIycW9ya2hibG9pNm8ifQ.8VxS8cKEypk08xfgUgbsHw';
 const map = new mapboxgl.Map({
@@ -8,9 +13,11 @@ const map = new mapboxgl.Map({
     style: 'data/positron2.json',
     center: map_center,
     zoom: main_zoom,
+    minZoom: 7,
     pitch: 0,
     bearing: 0,
-    antialias: true
+    antialias: true,
+    // maxBounds: bounds
 });
 
 
@@ -40,6 +47,7 @@ map.on('load', function () {
 
     map.addSource("arrows", {
         "type": "geojson",
+        "lineMetrics": true,
         'data': "data/chernihiv_arrow.geojson"
     });
 
@@ -104,7 +112,7 @@ map.on('load', function () {
           visibility: 'visible',
           'symbol-placement': "line-center",
           'symbol-spacing': 1,
-          'icon-size': 0.08,
+          'icon-size': 0.07,
           'icon-image': 'red_arrow',
           'icon-rotate': ['get', 'bearing'],
           'icon-rotation-alignment': 'map',
@@ -133,7 +141,24 @@ map.on('load', function () {
         "filter": ['all', ['==', 'type', 'arrow']],
         'paint': {
             'line-color': redColor,
-            'line-width': 4
+            'line-width': 5,
+            'line-gradient': [
+                'interpolate',
+                ['linear'],
+                ['line-progress'],
+                0,
+                'rgba(250, 70, 0, 0)',
+                0.1,
+                'rgba(250, 70, 0, 0.1)',
+                0.3,
+                'rgba(250, 70, 0, 0.3)',
+                0.5,
+                'rgba(250, 70, 0, 0.5)',
+                0.7,
+                'rgba(250, 70, 0, 0.8)',
+                1,
+                'rgba(250, 70, 0, 1)'
+                ]
         }
     });
 
