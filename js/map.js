@@ -11,6 +11,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZXZnZXNoYWRyb3pkb3ZhIiwiYSI6ImNqOWRhbnk3MDI4M
 const map = new mapboxgl.Map({
     container: 'map',
     style: 'data/positron2.json',
+//style: 'mapbox://styles/mapbox/satellite-streets-v9',
     center: map_center,
     zoom: main_zoom,
     minZoom: 7,
@@ -21,6 +22,17 @@ const map = new mapboxgl.Map({
     // maxBounds: bounds
 });
 
+map.on('style.load', () => {
+    map.addSource('mapbox-dem', {
+    'type': 'raster-dem',
+    'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+    'tileSize': 512,
+    'maxzoom': 14
+    });
+    // add the DEM source as a terrain layer with exaggerated height
+    map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+    });
+
 
 map.scrollZoom.disable();
 map.addControl(new mapboxgl.NavigationControl(),  'top-left');
@@ -30,6 +42,8 @@ map.on("click", function(e){
 })
 
 map.on('load', function () {
+
+
 
     map.addSource("polygons", {
         "type": "geojson",

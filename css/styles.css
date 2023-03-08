@@ -2,21 +2,36 @@
 body {
     font-size: 18px;
     line-height: 1.5;
+    margin:0;
 }
+
+.mobile-only {
+    display: none;
+}
+/* 
+#header {
+    height: 100vh;
+    background-image: url('../img/Shevchenko.JPG');
+    background-size: cover;
+} */
+
+
 /* Header style */
 #title-wrapper {
-    color:#484d53;
-    margin-top: 0;
-    margin-bottom: 50px;
+    color:#ffffff;
+    
+    margin-bottom: 0px;
 }
 
 #title-wrapper h1 {
     line-height: 1;
     text-align: center;
-    font-size: calc(70px + 1vw);
+    font-size: calc(60px + 3vw);
     margin-bottom: 0;
     margin-top: 0;
     text-transform: uppercase;
+    text-shadow: 1px 1px 3px #464646;
+    font-family: 'Times New Roman', Times, serif;
 }
 #title-wrapper h3  {
     margin-top: 5px;
@@ -24,6 +39,14 @@ body {
     font-size: calc(25px + 1vw);
     font-family: sans-serif;
     line-height: 1.2;
+    text-shadow: 1px 1px 3px #303030;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.date {
+    padding: 2px 5px;
+    background-color: #2e2e2eb9;
+    color: rgba(255, 255, 255, 0.94)
 }
 
 
@@ -62,7 +85,7 @@ body {
 #scroll {        
     position: relative;
     width: 100%;
-    margin: 30px auto 50px auto;    
+    margin: 0 auto 50px auto;    
     display: grid;
     grid-template-columns: 2fr 4fr 2fr;
 }
@@ -77,9 +100,18 @@ body {
     max-height: 100vh;
     background-color: white;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
     z-index:0;
 }   
+
+.scroll__graphic .mobile-title {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    z-index: 10;
+    margin-top: 50px;
+    
+}
+
 
 .scroll__graphic #map {
     position: relative;
@@ -119,6 +151,7 @@ body {
     grid-column:1/-1;
     grid-row: 1/2;
     z-index:-1;
+    background-position: 50% 50%;
 }
 
 
@@ -182,6 +215,12 @@ body {
     font-size: 20px;
     text-shadow: 1px 1px 3px #ffffff;
 }
+
+.step h3 {
+    font-size: 20px;
+    text-shadow: 1px 1px 3px #ffffff;
+}
+
 
 .step p {
    
@@ -272,6 +311,10 @@ a:hover {
 
     .two-col-grid {
         display:block; 
+    }
+
+    .mobile-only {
+        display: block;
     }
 }
 
