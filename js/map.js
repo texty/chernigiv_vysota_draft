@@ -398,6 +398,8 @@ function handleStepEnter(r) {
         duration: 3000, 
        // essential: true
     })
+
+    $(".scroll__text").css("width", "100%")
     
 }
       
