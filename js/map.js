@@ -14,6 +14,7 @@ const map = new mapboxgl.Map({
     center: map_center,
     zoom: main_zoom,
     minZoom: 7,
+    maxZoom: 14,
     pitch: 0,
     bearing: 0,
     antialias: true,
@@ -108,11 +109,12 @@ map.on('load', function () {
         id: 'arrow-icons',
         source: 'icons',
         type: 'symbol',
+        maxzoom: 11,
         layout: {
           visibility: 'visible',
           'symbol-placement': "line-center",
           'symbol-spacing': 1,
-          'icon-size': 0.07,
+          'icon-size': 0.08,
           'icon-image': 'red_arrow',
           'icon-rotate': ['get', 'bearing'],
           'icon-rotation-alignment': 'map',
@@ -138,10 +140,10 @@ map.on('load', function () {
         "id": "arrows-layer",
         'type': 'line',
         "source": "arrows",
-        "filter": ['all', ['==', 'type', 'arrow']],
+        "maxzoom": 11,
         'paint': {
             'line-color': redColor,
-            'line-width': 5,
+            'line-width': 6,
             'line-gradient': [
                 'interpolate',
                 ['linear'],
@@ -149,15 +151,15 @@ map.on('load', function () {
                 0,
                 'rgba(250, 70, 0, 0)',
                 0.1,
-                'rgba(250, 70, 0, 0.1)',
-                0.3,
                 'rgba(250, 70, 0, 0.3)',
+                0.3,
+                'rgba(250, 70, 0, 0.4)',
                 0.5,
-                'rgba(250, 70, 0, 0.5)',
+                 'rgba(250, 70, 0, 0.6)',
                 0.7,
                 'rgba(250, 70, 0, 0.8)',
                 1,
-                'rgba(250, 70, 0, 1)'
+                'rgba(250, 70, 0, 0.9)'
                 ]
         }
     });
