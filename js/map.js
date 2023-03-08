@@ -61,11 +61,18 @@ map.on('load', function () {
     //polygon stroke
     map.addLayer({
         "id": "polygons-layer",
-        'type': 'line',
+        'type': 'fill',
         "source": "polygons",
         'paint': {
-            'line-color': redColor,
-            'line-width': 2
+            'fill-color': [
+                'match',
+                ['get', 'side'],
+                'ru', redColor,
+                'ua','#00A68E',
+                'grey'
+            ],
+            'fill-opacity': 0.5
+            // 'line-width': 2
         }
     });
 
@@ -76,7 +83,30 @@ map.on('load', function () {
         "source": "dots",
         'paint': {
             'circle-radius': 4,
-            'circle-color': redColor,
+            'circle-color': [
+                'match',
+                ['get', 'side'],
+                'ru', redColor,
+                'ua','#00A68E',
+                'grey'
+            ]
+        }
+    });
+
+    map.addLayer({
+        "id": "lines-layer",
+        'type': 'line',
+        "source": "lines",
+        'paint': {
+            'line-color': [
+                'match',
+                ['get', 'side'],
+                'ru', redColor,
+                'ua','#00A68E',
+                'grey'
+
+            ],
+            'line-width': 3
         }
     });
 
@@ -87,7 +117,14 @@ map.on('load', function () {
         "source": "dots",
         'paint': {
             'circle-radius': 4,
-            'circle-color': redColor,
+            'circle-color': [
+                    'match',
+                    ['get', 'side'],
+                    'ru', redColor,
+                    'ua','#00A68E',
+                    'grey'
+
+            ],
             "circle-stroke-width": 1,
             "circle-stroke-color": "white"
         }
@@ -126,15 +163,7 @@ map.on('load', function () {
   
 
     //points
-    map.addLayer({
-        "id": "lines-layer",
-        'type': 'line',
-        "source": "lines",
-        'paint': {
-            'line-color': redColor,
-            'line-width': 3
-        }
-    });
+ 
 
     map.addLayer({
         "id": "arrows-layer",
@@ -205,6 +234,7 @@ map.on('load', function () {
             'text-justify': 'auto',
             'text-size': 12,
             "text-font": ["Noto Sans Italic"],
+            'icon-ignore-placement': true
             },
         'paint': {
             'text-color': 'white',     
@@ -228,7 +258,8 @@ map.on('load', function () {
             'text-justify': 'auto',
             'text-size': 12,
             "text-font": ["Noto Sans Italic"],
-            "text-offset": [1, 0.2]
+            "text-offset": [1, 0.2],
+            'icon-ignore-placement': true
             },
         'paint': {
             'text-color': 'white',         
@@ -271,56 +302,10 @@ map.on('load', function () {
   
       }, 1000 / framesPerSecond );
     }
-  
-//    
-  
-//   })
+
 
 
    
-const index_locations = {
-    0: {"coords":[31.40081,51.51740], "zoom": 11 }, 
-    1: {"coords":[31.40081,51.51740], "zoom": 11 }, 
-    2: {"coords":[31.40081,51.51740], "zoom": 11 }, 
-    3: {"coords":[31.00869094407608, 51.35248879457697], "zoom": 9 },
-    4: {"coords":[ 31.40545753973214, 51.5376156536291], "zoom": 13 },
-    5: {"coords":[31.47402,51.57969], "zoom": 10 },
-    6: {"coords":[31.159547535544675, 51.75494733370542], "zoom": 8.0 },
-    7: {"coords":[31.47402,51.57969], "zoom": 8.0 },
-    8: {"coords":[31.6663,52.0188], "zoom": 8.0 },
-    9: {"coords":[31.59689,51.86609], "zoom": 11 },
-    10: {"coords":[31.59689,51.86609], "zoom": 11 },
-    11: {"coords":[31.390991655703715, 51.571568216556415], "zoom": 11 },
-    12: {"coords":[31.404640,51.539589], "zoom": 13 },
-    13: {"coords":[31.404640,51.539589], "zoom": 13 },
-    14: {"coords":[31.371199,51.525428], "zoom": 13 },
-    15: {"coords":[31.3961916016313, 51.53667191457848], "zoom": 13 },
-    16: {"coords":[31.3961916016313, 51.53667191457848], "zoom": 13 },
-    17: {"coords":[31.3961916016313, 51.53667191457848], "zoom": 13 },
-    18: {"coords":[31.3961916016313, 51.53667191457848], "zoom": 13 },
-    19: {"coords":[31.38199,51.53224], "zoom": 13 },
-    20: {"coords":[31.38199,51.53224], "zoom": 13 },
-    21: {"coords":[31.38199,51.53224], "zoom": 13 },
-    22: {"coords":[31.38199,51.53224], "zoom": 13 },
-    23: {"coords":[31.40545753973214, 51.5376156536291], "zoom": 13 },
-    24: {"coords":[31.428531567849546, 51.538975042478796], "zoom": 13 },
-    25: {"coords":[31.397735424896837, 51.53333943713733], "zoom": 13 },
-    26: {"coords":[31.364517,51.530727], "zoom": 13.5 },
-    27: {"coords":[31.364517,51.530727], "zoom": 13.5 },
-    28: {"coords":[31.364517,51.530727], "zoom": 13.5 },
-    29: {"coords":[31.40363,51.51755], "zoom": main_zoom },
-    30: {"coords":[31.40363,51.51755], "zoom": main_zoom },
-    31: {"coords":[31.40363,51.51755], "zoom": main_zoom },
-    32: {"coords":[31.40363,51.51755], "zoom": main_zoom },
-    33: {"coords":[31.40363,51.51755], "zoom": main_zoom },
-    34: {"coords":[31.40363,51.51755], "zoom": main_zoom },
-    35: {"coords":[31.40363,51.51755], "zoom": main_zoom },
-    36: {"coords":[31.40363,51.51755], "zoom": main_zoom },
-    37: {"coords":[31.40363,51.51755], "zoom": main_zoom }
-   
-   
-}
-
 
 var scroller = scrollama();
 
