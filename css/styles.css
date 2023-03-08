@@ -19,11 +19,11 @@ body {
 /* Header style */
 #title-wrapper {
     color:#ffffff;
-    
     margin-bottom: 0px;
 }
 
 #title-wrapper h1 {
+    color:#ffffff;
     line-height: 1;
     text-align: center;
     font-size: calc(60px + 3vw);
@@ -34,6 +34,7 @@ body {
     font-family: 'Times New Roman', Times, serif;
 }
 #title-wrapper h3  {
+    color:#ffffff;
     margin-top: 5px;
     text-align: center;
     font-size: calc(25px + 1vw);
